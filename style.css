@@ -38,7 +38,9 @@ body {
     color: #00E0FF;
 }
 
-.main-menu div{
+.main-menu {
+    position: fixed;
+    width: 100%;
     padding-top: 34px;
 }
 
@@ -67,9 +69,9 @@ body {
 .footer-menu{
     position: fixed;
     width: 100%;
-    bottom: 34px;
+    padding-bottom: 34px;
+    bottom: 0;
     font-size: 18px;
-
 }
 
 .footer-menu a {
