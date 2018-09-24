@@ -15,4 +15,8 @@ function mousemove(){
     }
     document.getElementById('cursorX').innerHTML = "x: " + mouse_x;
     document.getElementById('cursorY').innerHTML = "y: " + mouse_y;
+
+    document.getElementsByClassName('vert-line')[0].style.left = mouse_x + 20;
+    document.getElementsByClassName('hor-line')[0].style.top = mouse_y - 20;
 }
+
