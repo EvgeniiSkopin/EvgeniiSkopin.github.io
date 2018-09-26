@@ -8,6 +8,17 @@ body {
     height: 100%;
 }
 
+body a:hover {
+    text-decoration: none;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 .coord {
     position: absolute;
     transform: rotate(-90deg);
@@ -28,13 +39,13 @@ body {
     transform: rotate(-90deg);
     width: 180px;
     display: block;
+    z-index: 999;
 }
 
 .mail a {
     color: #00E0FF;
 }
 .mail a:hover {
-    text-decoration: none;
     color: #00E0FF;
 }
 
@@ -42,10 +53,7 @@ body {
     position: fixed;
     width: 100%;
     padding-top: 34px;
-}
-
-.main-menu a {
-    color: #E5E5E5;
+    z-index: 999;
 }
 
 .main-menu a {
@@ -54,16 +62,25 @@ body {
 
 .main-menu a:hover {
     color: #E5E5E5;
-    text-decoration: none;
 }
 
 .right-menu {
     float: right;
     margin-right: 64px;
+    color: #E5E5E5;
+}
+
+.right-menu:hover {
+    color: #E5E5E5;
+}
+
+.left-menu:hover{
+    color: #69E4F5;
 }
 
 .left-menu{
     margin-left: 64px;
+    color: #69E4F5;
 }
 
 .footer-menu{
@@ -72,15 +89,7 @@ body {
     padding-bottom: 34px;
     bottom: 0;
     font-size: 18px;
-}
-
-.footer-menu a {
-    color: #69E4F5;
-}
-
-.footer-menu a:hover {
-    color: #69E4F5;
-    text-decoration: none;
+    z-index: 999;
 }
 
 .vert-line {
@@ -89,6 +98,7 @@ body {
     background-color: #868686;
     position: absolute;
     left: 0;
+    z-index: 999;
 }
 
 .hor-line {
@@ -97,4 +107,61 @@ body {
     background-color: #868686;
     position: absolute;
     top: 0;
+    z-index: 999;
+}
+
+/* First page content */
+
+.first-page-content {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+}
+
+.greeting {
+    color: #E5E5E5;
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 270px);
+    width: 540px;
+    height: 150px;
+    text-align: center;
+}
+
+.greeting h1 {
+    font-size: 57px;
+}
+.greeting h1 .updating {
+    color: #69E4F5;
+}
+
+.greeting .info-block {
+    padding: 0 40px;
+    text-align: left;
+}
+
+.greeting .info-block span {
+    font-size: 24px;
+}
+
+.scroll {
+    position: fixed;
+    bottom: 55px;
+    left: calc(50% - 60px);
+    transform: rotate(-90deg);
+}
+
+.scroll-line {
+    display: inline-block;
+    width: 70px;
+    height: 1px;
+    background-color: #00E0FF;
+    margin-bottom: 3px;
+    margin-right: 10px;
+}
+
+.scroll-text {
+    color: #E5E5E5;
+    font-size: 12px;
 }

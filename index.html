@@ -7,7 +7,6 @@
 </head>
 
 <body>
-
     <div class="main-menu">
         <div class="">
             <a href="" class="left-menu">Home</a>
@@ -16,19 +15,15 @@
             <a href="" class="right-menu">About</a>
         </div>
     </div>
-
     <div class="coord">
         <span id="cursorX">x: 0</span>
         <span id="cursorY">y: 0</span>
     </div>
-
     <div class="mail">
         <a href="">staisha.balan@gmail.com</a>
     </div>
-
     <div class="vert-line"></div>
     <div class="hor-line"></div>
-
     <div class="footer-menu">
         <div class="">
             <a href="" class="left-menu">CV</a>
@@ -36,6 +31,20 @@
         </div>
     </div>
 
+    <div class="first-page-content">
+        <div class="greeting">
+            <h1>I am <span class="updating">&nbsp; UI/UX &nbsp;</span> designer</h1>
+            <div class="info-block">
+                <span>My name is Anastasia Balanina. Let's do some</span>
+                <br/>
+                <span>qualitative and interesting work together</span>
+            </div>
+        </div>
+        <div class="scroll">
+            <span class="scroll-line"></span>
+            <span class="scroll-text">SCROLL</span>
+        </div>
+    </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -79,6 +88,13 @@
                     function onDocumentMouseMove(event) {
                         mouseX = ( event.clientX - windowHalfX ) / 100;
                         mouseY = ( event.clientY - windowHalfY ) / 100;
+
+                        document.getElementById('cursorX').innerHTML = "x: " + event.clientX;
+                        document.getElementById('cursorY').innerHTML = "y: " + event.clientY;
+
+                        document.getElementsByClassName('vert-line')[0].style.left = event.clientX + 20;
+                        document.getElementsByClassName('hor-line')[0].style.top = event.clientY - 20;
+                        
                         camera.position.x += ( mouseX - camera.position.x ) * .05;
                         camera.position.y += ( - mouseY - camera.position.y ) * .05;
                         camera.lookAt( scene.position );
