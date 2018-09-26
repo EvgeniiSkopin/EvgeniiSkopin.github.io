@@ -4,8 +4,14 @@ body {
     font-style: Regular !important;
     font-size: 14px !important;
     overflow: hidden;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
+    margin: 0;
+}
+
+body a {
+    text-decoration: none;
 }
 
 body a:hover {
@@ -20,7 +26,7 @@ canvas {
 }
 
 .coord {
-    position: absolute;
+    position: fixed;
     transform: rotate(-90deg);
     top: calc(50% - 20px);
     left: -15px;
@@ -33,7 +39,7 @@ canvas {
 }
 
 .mail {
-    position: absolute;
+    position: fixed;
     top: calc(50% - 35px);
     right: -45px;
     transform: rotate(-90deg);
@@ -96,7 +102,7 @@ canvas {
     width: 1px;
     height: 100%;
     background-color: #868686;
-    position: absolute;
+    position: fixed;
     left: 0;
     z-index: 999;
 }
@@ -105,7 +111,7 @@ canvas {
     width: 100%;
     height: 1px;
     background-color: #868686;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 999;
 }
@@ -122,10 +128,10 @@ canvas {
 .greeting {
     color: #E5E5E5;
     position: absolute;
-    top: calc(50% - 75px);
-    left: calc(50% - 270px);
-    width: 540px;
-    height: 150px;
+    top: calc(50% - 110px);
+    left: calc(50% - 285px);
+    width: 570px;
+    height: 220px;
     text-align: center;
 }
 
@@ -146,7 +152,7 @@ canvas {
 }
 
 .scroll {
-    position: fixed;
+    position: absolute;
     bottom: 55px;
     left: calc(50% - 60px);
     transform: rotate(-90deg);
@@ -164,4 +170,53 @@ canvas {
 .scroll-text {
     color: #E5E5E5;
     font-size: 12px;
+}
+
+/* Second page content */
+
+.second-page-content {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+}
+
+/* Third page content */
+
+.third-page-content {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+}
+
+.contacts {
+    color: #E5E5E5;
+    position: absolute;
+    top: calc(50% - 110px);
+    left: calc(50% - 285px);
+    width: 570px;
+    height: 220px;
+    text-align: center;
+}
+
+.contacts h1 {
+    font-size: 57px;
+}
+.contacts h1 .updating {
+    color: #69E4F5;
+}
+
+.contacts .icons-block {
+    width: 100%;
+    text-align: center;
+}
+
+.contacts .icons-block a {
+    box-sizing: content-box;
+    display: inline-block;
+}
+
+.contacts .icons-block a img {
+    width: 48px;
 }
