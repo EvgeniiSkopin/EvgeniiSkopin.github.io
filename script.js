@@ -21,9 +21,9 @@ $(document).ready(function(){
 
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.01, 100);
 
-    var renderer = new THREE.WebGLRenderer();
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor( 0x7A7A7A, 1 );
     document.body.appendChild(renderer.domElement);
 
     var geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);

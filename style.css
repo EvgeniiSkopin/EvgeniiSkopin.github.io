@@ -15,6 +15,19 @@ body {
     display: none !important;
 }
 
+.noise {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    pointer-events: none;
+    opacity: .05;
+}
+
 a {
     cursor: crosshair;
 }
@@ -276,6 +289,25 @@ canvas {
     z-index: 1;
 }
 
+.slider-control {
+    position: absolute;
+    bottom: 55px;
+    left: calc(50% - 50px);
+}
+
+.control-line {
+    display: inline-block;
+    width: 1px;
+    height: 50px;
+    margin-left: 10px;
+    background-color: white;
+}
+
+.control-line.active {
+    height: 70px;
+    background-color: #00E0FF;
+}
+
 /* Third page content */
 
 .third-page-content {
@@ -285,14 +317,53 @@ canvas {
     z-index: 1;
 }
 
+.social-link-part {
+    padding-top: 40px;
+    width: 50%;
+    float: left;
+}
+
+.social-link {
+    margin-top: 15px;
+    display: inline-block;
+    width: 100%;
+    font-size: 24px;
+    color: #F1F1F1;
+}
+
+.social-link {
+    display: inline-block;
+    width: 100%
+}
+
+.social-link.uplabs:hover {
+    color: #2575FC;
+}
+.social-link.dribbble:hover {
+    color: #E54784;
+}
+.social-link.talenthouse:hover {
+    color: #76BB34;
+}
+.social-link.medium:hover {
+    color: #D7EFEE;
+}
+.social-link.designs:hover {
+    color: #FF7E65;
+}
+.social-link.pinterest:hover {
+    color: #BD081C;
+}
+
 .contacts {
+    background-color: #151515;
     color: #E5E5E5;
-    position: absolute;
-    top: calc(50% - 110px);
-    left: calc(50% - 285px);
-    width: 570px;
-    height: 220px;
-    text-align: center;
+    position: relative;
+    padding: 60px 100px 0;
+    /* top: calc(50% - 110px); */
+    /* left: calc(50% - 285px); */
+    width: calc(50% - 200px);
+    height: calc(100% - 60px);
 }
 
 .contacts h1 {
@@ -300,18 +371,4 @@ canvas {
 }
 .contacts h1 .updating {
     color: #69E4F5;
-}
-
-.contacts .icons-block {
-    width: 100%;
-    text-align: center;
-}
-
-.contacts .icons-block a {
-    box-sizing: content-box;
-    display: inline-block;
-}
-
-.contacts .icons-block a img {
-    width: 48px;
 }

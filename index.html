@@ -1,13 +1,14 @@
 <html>
 
 <head>
-
-    <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Play" rel="stylesheet">
-
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Play" rel="stylesheet" />
+    <link rel="shortcut icon" href="img/spyro.png"  />
 </head>
 
 <body>
+    <canvas id="noise" class="noise"></canvas>
+
     <div class="main-menu">
         <div class="">
             <a href="javascript:" class="left-menu" onclick="changeTab('home')">
@@ -42,7 +43,6 @@
     </div>
 
     <div class="first-page-content">
-
         <div class="greeting">
             <h1>I am
                 <span class="updating"> UI/UX </span> designer</h1>
@@ -68,26 +68,36 @@
 
     <div class="second-page-content">
 
+        <div class="slider-control">
+            <a class="control-line active"></a>
+            <a class="control-line"></a>
+            <a class="control-line"></a>
+            <a class="control-line"></a>
+            <a class="control-line"></a>
+            <a class="control-line"></a>
+        </div>
     </div>
 
     <div class="third-page-content">
         <div class="contacts">
-            <h1>I am
-                <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
-            <div class="icons-block">
-                <a href="javascript:">
-                    <img src="img/medium.png">
-                </a>
-                <a href="javascript:">
-                    <img src="img/pinterest.png">
-                </a>
-            </div>
+            <h1>I am <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
+            <div class="social-link-part">
+                    <a class="social-link uplabs" href="javascript:">Uplabs</a>
+                    <a class="social-link dribbble" href="javascript:">Dribbble</a>
+                    <a class="social-link talenthouse" href="javascript:">Talenthouse</a>
+                </div>
+                <div class="social-link-part">
+                    <a class="social-link medium" href="javascript:">Medium</a>
+                    <a class="social-link designs" href="javascript:">99designs</a>
+                    <a class="social-link pinterest" href="javascript:">Pinterest</a>
+                </div>   
         </div>
     </div>
-
 </body>
 
-<script src="http://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+<script src="script/jquery.min.js"></script>
+<script src="script/text-random.js"></script>
+<script src="script/noise.js"></script>
 <script src="script.js"></script>
 <script src="three.js"></script>
 
