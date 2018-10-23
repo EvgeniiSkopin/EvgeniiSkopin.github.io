@@ -11,6 +11,10 @@ body {
     cursor: crosshair;
 }
 
+.hidden {
+    display: none !important;
+}
+
 a {
     cursor: crosshair;
 }
@@ -61,6 +65,14 @@ canvas {
     color: #00E0FF;
 }
 
+.menu-underline {
+    position: absolute;
+    height: 1px;
+    background-color: #00E0FF;
+    bottom: -3px;
+    width: 100%;
+}
+
 .main-menu {
     position: fixed;
     width: 100%;
@@ -70,6 +82,8 @@ canvas {
 
 .main-menu a {
     color: #E5E5E5;
+    display: inline-block;
+    position: relative;
 }
 
 .main-menu a:hover {
@@ -148,49 +162,86 @@ canvas {
 .greeting h1 .updating {
     font-weight: 400;
     color: #69E4F5;
+    width: 200px;
+    display: inline-block;
 }
 
 .greeting .info-block {
-    padding: 0 40px;
+    padding: 20px 40px 0;
     text-align: center;
     font-family: 'Oswald';
     font-size: 24px;
 }
 
-#box1,#box2{
-    height: 40px;
-    width: 500px;
-    margin-top: 10px;
+#box1 {
+    height: 47px;
+    width: 425px;
     position: relative;
     transform: translateY(-50%);
     overflow: hidden;
+    line-height: 40px;
 }
 
-.backgroundLayer {
-    height: 40px;
-    width: 500px;
+#box1 div {
+    height: 47px;
+    width: 425px;
+}
+
+#box1 .backgroundLayer {
     background-color: black;
     position: absolute;
-    left: 500px;
+    left: 425px;
     z-index: 0;
 }
 
-.colorLayer{
-    height: 40px;
-    width: 500px;
+#box1 .colorLayer{
     background-color:#69E4F5;
     position: absolute;
-    left: -500px;
+    left: -425px;
     z-index: 2;
 }
-#box2 .colorLayer{
-    background-color:#69E4F5;
-}
-.title{
+
+#box1 .title{
     position: absolute;
-    left: -500px;
+    left: -425px;
     z-index: 1;
 }
+
+#box2 {
+    height: 47px;
+    width: 390px;
+    margin-top: 5px;
+    position: relative;
+    transform: translateY(-50%);
+    overflow: hidden;
+    line-height: 40px;
+}
+
+#box2 div {
+    height: 47px;
+    width: 390px;
+}
+
+#box2 .backgroundLayer {
+    background-color: black;
+    position: absolute;
+    left: 390px;
+    z-index: 0;
+}
+
+#box2 .colorLayer{
+    background-color:#69E4F5;
+    position: absolute;
+    left: -390px;
+    z-index: 2;
+}
+
+#box2 .title{
+    position: absolute;
+    left: -390px;
+    z-index: 1;
+}
+
 
 
 

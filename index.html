@@ -1,18 +1,28 @@
 <html>
+
 <head>
 
-<link href="style.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Oswald|Play" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Play" rel="stylesheet">
 
 </head>
 
 <body>
     <div class="main-menu">
         <div class="">
-            <a href="javascript:" class="left-menu">Home</a>
+            <a href="javascript:" class="left-menu" onclick="changeTab('home')">
+                Home
+                <div class="menu-underline home"></div>
+            </a>
 
-            <a href="javascript:" class="right-menu">Projects</a>
-            <a href="javascript:" class="right-menu">About</a>
+            <a href="javascript:" class="right-menu" onclick="changeTab('projects')">
+                Projects
+                <div class="menu-underline projects hidden"></div>
+            </a>
+            <a href="javascript:" class="right-menu" onclick="changeTab('about')">
+                About
+                <div class="menu-underline about hidden"></div>
+            </a>
         </div>
     </div>
     <div class="coord">
@@ -20,7 +30,7 @@
         <span id="cursorY">y: 0</span>
     </div>
     <div class="mail">
-        <a href="javascript:">staisha.balan@gmail.com</a>
+        <a href="mailto:staisha.balan@gmail.com">staisha.balan@gmail.com</a>
     </div>
     <div class="vert-line"></div>
     <div class="hor-line"></div>
@@ -34,18 +44,19 @@
     <div class="first-page-content">
 
         <div class="greeting">
-            <h1>I am <span class="updating">&nbsp; UI/UX &nbsp;</span> designer</h1>
+            <h1>I am
+                <span class="updating"> UI/UX </span> designer</h1>
             <div class="info-block">
-                    <div id="box1">
-                        <div class="backgroundLayer"></div>
-                        <div class="colorLayer"></div>
-                        <div class="title">My name is Anastasia Balanina. Let's do some</div>
-                    </div>
-                    <div id="box2">
-                        <div class="backgroundLayer"></div>
-                        <div class="colorLayer"></div>
-                        <div class="title">qualitative and interesting work together</div>
-                    </div>
+                <div id="box1">
+                    <div class="backgroundLayer"></div>
+                    <div class="colorLayer"></div>
+                    <div class="title">My name is Anastasia Balanina. Let's do some</div>
+                </div>
+                <div id="box2">
+                    <div class="backgroundLayer"></div>
+                    <div class="colorLayer"></div>
+                    <div class="title">qualitative and interesting work together</div>
+                </div>
                 <br/>
             </div>
         </div>
@@ -61,73 +72,23 @@
 
     <div class="third-page-content">
         <div class="contacts">
-            <h1>I am <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
+            <h1>I am
+                <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
             <div class="icons-block">
-                <a href="javascript:"><img src="img/medium.png"></a>
-                <a href="javascript:"><img src="img/pinterest.png"></a>
+                <a href="javascript:">
+                    <img src="img/medium.png">
+                </a>
+                <a href="javascript:">
+                    <img src="img/pinterest.png">
+                </a>
             </div>
         </div>
     </div>
 
 </body>
 
-<script 
-    src="http://code.jquery.com/jquery-3.3.0.min.js"
-    integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
-    crossorigin="anonymous">
-</script>
-
-
+<script src="http://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <script src="three.js"></script>
-
-<script>
-        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-        
-            var scene = new THREE.Scene();
-                var mouseX = 0;
-                    var mouseY = 0;
-                    var windowHalfX = window.innerWidth / 2;
-                    var windowHalfY = window.innerHeight / 2;
-        
-                    var camera = new THREE.PerspectiveCamera( 60, window.innerWidth/window.innerHeight, 0.01, 100 );
-        
-                    var renderer = new THREE.WebGLRenderer();
-                    renderer.setSize( window.innerWidth, window.innerHeight );
-                    document.body.appendChild( renderer.domElement );
-        
-                    var geometry = new THREE.BoxGeometry( 1.5, 1.5, 1.5 );
-                    var material = new THREE.MeshBasicMaterial( { color: 868686 } );
-                    var cube = new THREE.Mesh( geometry, material );
-                    scene.add( cube );
-        
-                    camera.position.z = 2;
-        
-                    function render() {
-                        camera.position.x = 2;
-                        camera.position.y = -2;
-                        camera.lookAt( scene.position );
-                        
-                        renderer.render( scene, camera );
-                    };
-                    
-                    function onDocumentMouseMove(event) {
-                        mouseX = ( event.clientX - windowHalfX ) / 100;
-                        mouseY = ( event.clientY - windowHalfY ) / 100;
-
-                        document.getElementById('cursorX').innerHTML = "x: " + event.clientX;
-                        document.getElementById('cursorY').innerHTML = "y: " + event.clientY;
-
-                        document.getElementsByClassName('vert-line')[0].style.left = event.clientX + 20;
-                        document.getElementsByClassName('hor-line')[0].style.top = event.clientY - 20;
-                        
-                        camera.position.x = 2 + mouseX * .1;
-                        camera.position.y = -2 + mouseY * .1;
-                        camera.lookAt( scene.position );
-                        renderer.render( scene, camera );
-                    }
-                    
-                    render();
-        </script>
 
 </html>
