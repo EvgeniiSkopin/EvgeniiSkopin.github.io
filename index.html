@@ -1,30 +1,30 @@
 <html>
 
 <head>
-    <link href="style.css" rel="stylesheet" />
+    <link href="content/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Oswald|Play" rel="stylesheet" />
-    <link rel="shortcut icon" href="img/spyro.png"  />
+    <link rel="shortcut icon" href="content/img/spyro.png" />
+
+    <title>Balan</title>
 </head>
 
 <body>
     <canvas id="noise" class="noise"></canvas>
 
     <div class="main-menu">
-        <div class="">
-            <a href="javascript:" class="left-menu" onclick="changeTab('home')">
-                Home
-                <div class="menu-underline home"></div>
-            </a>
+        <a href="javascript:" class="left-menu rand-text" onclick="changeTab('home')">
+            <span>Home</span>
+            <div class="menu-underline home"></div>
+        </a>
 
-            <a href="javascript:" class="right-menu" onclick="changeTab('projects')">
-                Projects
-                <div class="menu-underline projects hidden"></div>
-            </a>
-            <a href="javascript:" class="right-menu" onclick="changeTab('about')">
-                About
-                <div class="menu-underline about hidden"></div>
-            </a>
-        </div>
+        <a href="javascript:" class="right-menu" onclick="changeTab('projects')">
+            <span>Projects</span>
+            <div class="menu-underline projects hidden"></div>
+        </a>
+        <a href="javascript:" class="right-menu" onclick="changeTab('about')">
+            <span>About</span>
+            <div class="menu-underline about hidden"></div>
+        </a>
     </div>
     <div class="coord">
         <span id="cursorX">x: 0</span>
@@ -45,7 +45,7 @@
     <div class="first-page-content">
         <div class="greeting">
             <h1>I am
-                <span class="updating"> UI/UX </span> designer</h1>
+                <span class="updating work-type">  </span> designer</h1>
             <div class="info-block">
                 <div id="box1">
                     <div class="backgroundLayer"></div>
@@ -57,7 +57,7 @@
                     <div class="colorLayer"></div>
                     <div class="title">qualitative and interesting work together</div>
                 </div>
-                <br/>
+                <br />
             </div>
         </div>
         <div class="scroll">
@@ -82,23 +82,25 @@
         <div class="contacts">
             <h1>I am <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
             <div class="social-link-part">
-                    <a class="social-link uplabs" href="javascript:">Uplabs</a>
-                    <a class="social-link dribbble" href="javascript:">Dribbble</a>
-                    <a class="social-link talenthouse" href="javascript:">Talenthouse</a>
-                </div>
-                <div class="social-link-part">
-                    <a class="social-link medium" href="javascript:">Medium</a>
-                    <a class="social-link designs" href="javascript:">99designs</a>
-                    <a class="social-link pinterest" href="javascript:">Pinterest</a>
-                </div>   
+                <a class="social-link uplabs" href="javascript:">Uplabs</a>
+                <a class="social-link dribbble" href="javascript:">Dribbble</a>
+                <a class="social-link talenthouse" href="javascript:">Talenthouse</a>
+            </div>
+            <div class="social-link-part">
+                <a class="social-link medium" href="javascript:">Medium</a>
+                <a class="social-link designs" href="javascript:">99designs</a>
+                <a class="social-link pinterest" href="javascript:">Pinterest</a>
+            </div>
         </div>
     </div>
 </body>
 
-<script src="script/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/three.js"></script>
+
 <script src="script/text-random.js"></script>
 <script src="script/noise.js"></script>
-<script src="script.js"></script>
-<script src="three.js"></script>
+<script src="script/script.js"></script>
+<script src="script/three-js.js"></script>
 
 </html>
