@@ -57,3 +57,13 @@ $(document).ready(() => {
     clearInterval(timerUpdatingWorkType);
   }
 });
+
+
+// example 
+
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+let str = 'abacaba';
+let index = 2;
+console.log(str.replaceAt(index, "x")); // result: abxcaba

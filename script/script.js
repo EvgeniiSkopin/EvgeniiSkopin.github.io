@@ -12,3 +12,8 @@ changeTab = (tab) => {
     $('.menu-underline').addClass('hidden');
     $(`.menu-underline.${tab}`).removeClass('hidden');
 }
+
+changeSlider = (el) => {
+    $('.control-line.active').removeClass('active');
+    $(el).addClass('active');
+}
