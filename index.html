@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="first-page-content">
+    <!-- <div class="first-page-content">
         <div class="greeting">
             <h1>I am
                 <span class="updating work-type">  </span> designer</h1>
@@ -64,26 +64,26 @@
             <span class="scroll-line"></span>
             <span class="scroll-text">SCROLL</span>
         </div>
-    </div>
+    </div> -->
 
     <div class="second-page-content">
         <div class="morph-wrap">
             <svg class="morph" width="100%" height="100%" viewBox="0 0 100% 100%">
-                <polygon points="300 200, 300 400, 600 400, 600 200" />
+                <polygon points="300 200, 300 400, 600 400, 600 200"/>
             </svg>
         </div>
 
         <div class="slider-control">
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line active"></a>
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line"></a>
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line"></a>
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line"></a>
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line"></a>
-            <a href="javascript:" onclick="changeSlider(this)" class="control-line"></a>
+            <a href="javascript:" id="slide0" onclick="changeSlider(this)" class="control-line active"></a>
+            <a href="javascript:" id="slide1" onclick="changeSlider(this)" class="control-line"></a>
+            <a href="javascript:" id="slide2" onclick="changeSlider(this)" class="control-line"></a>
+            <a href="javascript:" id="slide3" onclick="changeSlider(this)" class="control-line"></a>
+            <!-- <a href="javascript:" id="slide4" onclick="changeSlider(this)" class="control-line"></a>
+            <a href="javascript:" id="slide5" onclick="changeSlider(this)" class="control-line"></a> -->
         </div>
     </div>
 
-    <div class="third-page-content">
+    <!-- <div class="third-page-content">
         <div class="contacts">
             <h1>I am <span class="updating">&nbsp; create &nbsp;</span> there:</h1>
             <div class="social-link-part">
@@ -97,11 +97,12 @@
                 <a class="social-link pinterest" href="javascript:">Pinterest</a>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 
 <script src="lib/jquery.min.js"></script>
 <script src="lib/three.js"></script>
+<script src="lib/anime.min.js"></script>
 
 <script src="script/text-random.js"></script>
 <script src="script/noise.js"></script>

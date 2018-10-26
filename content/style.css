@@ -140,7 +140,7 @@ canvas {
     background-color: #868686;
     position: fixed;
     left: 0;
-    z-index: 999;
+    z-index: -1;
 }
 
 .hor-line {
@@ -149,7 +149,7 @@ canvas {
     background-color: #868686;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: -1;
 }
 
 /* First page content */
