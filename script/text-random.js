@@ -48,18 +48,29 @@ $(document).ready(() => {
     }
 
     setTimeout(() => {
-      workTypeElem.text(updatingWorkType[i].name);
-      i = i == 2 ? 0 : i + 1;
+      //workTypeElem.text(updatingWorkType[i].name);
+
+      for (let z = 0; z < updatingWorkType[i].count; z++) {
+        setTimeout(() => {
+          //let sliced = updatingWorkType[i].count - z - 1;
+          //let text = '';
+          //sliced ? text = updatingWorkType[i].name.slice(0, -sliced) : text = updatingWorkType[i].name;
+          let newText = text = text.replaceAt(z, updatingWorkType[i].name.charAt(z));
+          workTypeElem.text(newText);
+
+          if(z == updatingWorkType[i].count - 1){
+            i = i == 2 ? 0 : i + 1;
+          }
+        }, 100 * z + 1);
+      }
     }, 100 * updatingWorkType[i].count + 2);
+
   }, 5000);
 
-  clearTimers = () => {
-    clearInterval(timerUpdatingWorkType);
-  }
+  // clearTimers = () => {
+  //   clearInterval(timerUpdatingWorkType);
+  // }
 });
-
-
-// example 
 
 String.prototype.replaceAt = function(index, replacement) {
   return this.substr(0, index) + replacement + this.substr(index + replacement.length);
