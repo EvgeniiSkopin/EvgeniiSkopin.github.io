@@ -16,7 +16,29 @@ $('.rand-text').mouseenter((event) => {
   }, 300);
 });
 
+// create write work inspire design
 
+let updatingMyself = [
+  {
+    count: 6,
+    name: 'create'
+  },
+  {
+    count: 5,
+    name: 'write'
+  },
+  {
+    count: 4,
+    name: 'work'
+  },
+  {
+    count: 7,
+    name: 'inspire'
+  },
+  {
+    count: 6,
+    name: 'design'
+  }]
 let updatingWorkType = [
   {
     count: 5,
@@ -32,10 +54,35 @@ let updatingWorkType = [
   }]
 
 $(document).ready(() => {
+  let myselfTypeElem = $('.updating.myself');
+  let i2 = 1;
+
+  let timerUpdatingMysef = setInterval(() => {
+    let text = '';
+    for (let y = 0; y < updatingMyself[i2].count; y++) {
+      setTimeout(() => {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+        myselfTypeElem.text(text);
+      }, 100 * y + 1);
+    }
+    setTimeout(() => {
+      for (let z = 0; z < updatingMyself[i2].count; z++) {
+        setTimeout(() => {
+          let newText = text = text.replaceAt(z, updatingMyself[i2].name.charAt(z));
+          myselfTypeElem.text(newText);
+          if(z == updatingMyself[i2].count - 1){
+            i2 = i2 == 4 ? 0 : i2 + 1;
+          }
+        }, 100 * z + 1);
+      }
+    }, 100 * updatingMyself[i2].count + 2);
+  }, 5000);
+
+
   let workTypeElem = $('.updating.work-type');
   let i = 1;
 
-  workTypeElem.text(updatingWorkType[0].name);
+  //workTypeElem.text(updatingWorkType[0].name);
 
   let timerUpdatingWorkType = setInterval(() => {
     let text = '';
