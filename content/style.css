@@ -1,8 +1,8 @@
 body {
     background-color: #1D1D1D !important;
-    font-family: 'Play' !important;
-    font-style: Regular !important;
-    font-size: 16px !important;
+    font-family: 'Play';
+    font-style: normal;
+    font-size: 16px;
     overflow: hidden;
     overflow-y: scroll;
     width: 100%;
@@ -13,6 +13,10 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+.center {
+    margin: 0 auto;
 }
 
 .noise {
@@ -258,9 +262,6 @@ canvas {
     z-index: 1;
 }
 
-
-
-
 .scroll {
     position: absolute;
     bottom: 55px;
@@ -290,27 +291,151 @@ canvas {
     width: 100%;
     position: relative;
     z-index: 1;
+    left: 0;
+    background-color: #1D1D1D !important;
+}
+
+.sliders-wrapper {
+    width: 400%;
+    left: 0;
+    position: relative;
 }
 
 .morph-wrap {
 	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	width: 100%;
+    top: calc(50% - 300px);
+    left: calc(50% - 480px);
+    width: 500px;
+    height: 500px;
 	overflow: hidden;
-	display: flex;
+	/* display: flex;
 	align-items: center;
-	justify-content: center;
-	pointer-events: none;
+	justify-content: center; */
+    pointer-events: none;
+    z-index: -1;
 }
 
 .morph {
-	position: relative;
+	fill: black;
+    stroke-width: 8px;
+    stroke: black;
+}
+
+.slider-content {
+    max-width: 715px;
+    height: 375px;
+    top: calc(50% - 200px);
+    position: relative;
+}
+
+.slider-block {
+    position: relative;
+    width: 25%;
     height: 100%;
-	fill: transparent;
-	stroke-width: 8px;
-	stroke: #22bcc0;
+    float: left;
+}
+
+.slider-background-image {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-work-type {
+    position: absolute;
+    font-family: 'Play';
+    font-size: 14px;
+    left: -35px;
+    top: 10px;
+    color: #E5E5E5;
+    transform: rotate(-90deg);
+}
+
+.slider-text {
+    width: 425px;
+    position: absolute;
+    bottom: 80px;
+    left: -37px;
+}
+
+.slider-block.slider0 .slider-background-image{
+    background-image: url('../content/img/slider-img-0.png');
+}
+.slider-block.slider0 .slider-proj-color-block {
+    background: #70C4E3;
+}
+
+.slider-block.slider1 .slider-background-image{
+    background-image: url('../content/img/slider-img-1.png');
+}
+.slider-block.slider1 .slider-proj-color-block {
+    background: #9EC749;
+}
+
+.slider-block.slider2 .slider-background-image{
+    background-image: url('../content/img/slider-img-2.png');
+}
+.slider-block.slider2 .slider-proj-color-block {
+    background: #FFE608;
+}
+
+.slider-block.slider3 .slider-background-image{
+    background-image: url('../content/img/slider-img-3.png');
+}
+.slider-block.slider3 .slider-proj-color-block {
+    background: #7856FF;
+}
+
+.slider-proj-color-block {
+    width: 30px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+}
+
+.slider-proj-name {
+    font-family: 'Play';
+    font-weight: bold;
+    font-size: 48px;
+    letter-spacing: 0.2em;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+#box3 {
+    height: 47px;
+    width: 425px;
+    position: relative;
+    overflow: hidden;
+    line-height: 40px;
+}
+
+#box3 div {
+    height: 47px;
+    width: 425px;
+}
+
+#box3 .backgroundLayer {
+    background-color: black;
+    position: absolute;
+    left: 425px;
+    z-index: 0;
+}
+
+#box3 .colorLayer{
+    background-color:#69E4F5;
+    position: absolute;
+    left: -425px;
+    z-index: 2;
+}
+
+#box3 .title{
+    position: absolute;
+    left: -425px;
+    z-index: 1;
+    text-align: center;
+    font-family: 'Oswald';
+    font-size: 24px;
+    color: #E5E5E5;
 }
 
 .slider-control {
@@ -318,6 +443,7 @@ canvas {
     bottom: 55px;
     left: calc(50% - 50px);
 }
+
 .control-line {
     display: inline-block;
     width: 5px;
