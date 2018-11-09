@@ -1,3 +1,38 @@
+let scrollPositions = [
+    { pageName: 'main', index: 0 },
+    { pageName: '', index: 1 },
+    { pageName: '', index: 2 }
+];
+let scrollPosition = scrollPositions[0].index;
+let scrolling = false;
+
+changePostion = () => {
+
+}
+
+$(window).bind('DOMMouseScroll mousewheel', (event) => {
+    if (scrolling) {
+        return;
+    }
+    scrolling = true;
+
+    if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
+        // down
+
+        console.log('down');
+    } else {
+        // up
+
+        console.log('up');
+    }
+
+    setTimeout(() => {
+        scrolling = false;
+      }, 1000);
+
+    return;
+});
+
 $("#box1 .colorLayer").animate({ left: "0px" }, 300);
 $("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
 $("#box1 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
@@ -19,14 +54,13 @@ changeTab = (tab) => {
 }
 
 var i, N = 6, X = -225, Y = -225, R = 175;
-  var angle;
-  var s = "";
-  for (i = 0; i < N; i++)
-  {
-    angle = 2*3.14*i/N;
-    s += String(-(R*Math.cos(angle)+X)) + " " + String(-(R*Math.sin(angle)+Y)) + ",";
-  }
-  console.log(s);
+var angle;
+var s = "";
+for (i = 0; i < N; i++) {
+    angle = 2 * 3.14 * i / N;
+    s += String(-(R * Math.cos(angle) + X)) + " " + String(-(R * Math.sin(angle) + Y)) + ",";
+}
+console.log(s);
 
 // slider
 
