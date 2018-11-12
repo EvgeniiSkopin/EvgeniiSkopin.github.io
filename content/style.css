@@ -33,7 +33,7 @@ body {
 }
 
 a {
-    cursor: crosshair;
+    cursor: url('img/cursor_075.png'), auto !important;
 }
 
 
