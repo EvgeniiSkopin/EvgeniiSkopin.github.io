@@ -14,47 +14,10 @@ $(document).ready(() => {
     document.body.appendChild(renderer.domElement);
 
     let geometry = new THREE.CubeGeometry(1.5, 1.5, 1.5, 10, 10, 10);
-
     let material = new THREE.ParticleBasicMaterial({ size: 0.02, color: 868686 });
-    
     let mesh = new THREE.ParticleSystem(geometry, material);
-
-    //let cube = new THREE.Mesh(geometry, mesh);
-
     scene.add(mesh);
-
     
-
-    //   var mousePosition = {
-    //     x: 0.0,
-    //     y: 1.0,
-    // };
-    // var v2MousePosition = new THREE.Vector2(mousePosition.x, mousePosition.y);
-
-    //   let material = new THREE.ShaderMaterial({
-    //     uniforms: {
-    //         color1: {type: 'v3', value: new THREE.Vector3(10, 10, 10)},
-    //         color2: {type: 'v3', value: new THREE.Vector3(55, 55, 55)},
-    //         u_time: {type: 'f', value: 0},
-    //         u_shapeSize: {type: 'v2', value: new THREE.Vector2(38.0, 38.0)},
-    //         u_mousePosition: {type: 'v2', value: v2MousePosition},
-    //     },
-    //     fragmentShader: $('#fragmentShaderCenterPiece').text(),
-    //     vertexShader: $('#vertexShaderCenterPiece').text(),
-    // });
-    // let cube = new THREE.Mesh(geometry, material);
-    // scene.add(cube);
-
-
-    //group = new THREE.Group();
-    //scene.add( group );
-
-    //var helper = new THREE.BoxHelper( new THREE.Mesh( new THREE.BoxBufferGeometry( 1.5, 1.5, 1.5 ) ) );
-    //helper.material.color.setHex( 0x424141 );
-    //helper.material.blending = THREE.AdditiveBlending;
-    //helper.material.transparent = true;
-    //group.add( helper );
-
     camera.position.z = 2;
 
     render = () => {
