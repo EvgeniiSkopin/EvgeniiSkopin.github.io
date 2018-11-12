@@ -514,7 +514,7 @@ canvas {
     color: #BD081C;
 }
 
-.contacts {
+.contacts-main {
     background-color: #151515;
     color: #E5E5E5;
     position: relative;
@@ -525,11 +525,11 @@ canvas {
     height: calc(100% - 60px);
 }
 
-.contacts h1 {
+.contacts-main h1 {
     font-size: 57px;
 }
 
-.contacts h1 .updating {
+.contacts-main h1 .updating {
     color: #69E4F5;
     width: 220px;
     display: inline-block;

@@ -1,10 +1,23 @@
 let scrollPositions = [
-    { pageName: 'main', className: 'first-page-content', index: 0, top: '0' },
-    { pageName: 'project', className: 'second-page-content', index: 1, top: '-100vh' },
-    { pageName: 'contact', className: 'third-page-content', index: 2, top: '-200vh' }
+    { pageName: 'home', className: 'first-page-content', index: 0, top: '0' },
+    { pageName: 'projects', className: 'second-page-content', index: 1, top: '-100vh' },
+    { pageName: 'contacts', className: 'third-page-content', index: 2, top: '-200vh' }
 ];
 let scrollPosition = scrollPositions[0];
 let scrolling = false;
+
+// change tab
+changeTab = (tab) => {
+    if (scrolling) { return; }
+    scrolling = true;
+    $('.menu-underline').addClass('hidden');
+    $(`.menu-underline.${tab}`).removeClass('hidden');
+    scrollPosition = scrollPositions.find(x => x.pageName == tab);
+    $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
+    setTimeout(() => {
+        scrolling = false;
+    }, 1500);
+}
 
 $(window).bind('DOMMouseScroll mousewheel', (event) => {
     if (scrolling) { return; }
@@ -25,9 +38,12 @@ $(window).bind('DOMMouseScroll mousewheel', (event) => {
         }
     }
 
+    $('.menu-underline').addClass('hidden');
+    $(`.menu-underline.${scrollPosition.pageName}`).removeClass('hidden');
+
     setTimeout(() => {
         scrolling = false;
-    }, 2000);
+    }, 1500);
     
     return;
 });
@@ -48,13 +64,6 @@ $("#box3 .colorLayer").animate({ left: "0px" }, 300);
 $("#box3 .colorLayer").delay(400).animate({ left: "425px" }, 300);
 $("#box3 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
 $("#box3 .title").animate({ left: "0px" });
-
-
-// change tab
-changeTab = (tab) => {
-    $('.menu-underline').addClass('hidden');
-    $(`.menu-underline.${tab}`).removeClass('hidden');
-}
 
 
 // slider
