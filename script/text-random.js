@@ -1,20 +1,55 @@
 let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%$';
 
-let originalText = 'Home';
+let tabTexts = [
+  { text: 'Home', class: 'home', animating: false, count: 4 },
+  { text: 'Projects', class: 'projects', animating: false, count: 8 },
+  { text: 'Contacts', class: 'contacts', animating: false, count: 8 }
+];
+
+let animating = false;
 
 $('.rand-text').mouseenter((event) => {
-  let currentTarget = $(event.currentTarget).find('span');
+  if (animating) {
+    return;
+  }
+  animating = true;
+
+  let currentTarget = $(event.currentTarget);
+
+  if (currentTarget.hasClass(tabTexts[0].class)) {
+    changeText(currentTarget, 0);
+  }
+  else if (currentTarget.hasClass(tabTexts[1].class)) {
+    changeText(currentTarget, 1);
+  }
+  else if (currentTarget.hasClass(tabTexts[2].class)) {
+    changeText(currentTarget, 2);
+  }
+
+});
+
+changeText = (currentTarget, index) => {
+  let changingSpan = currentTarget.find('span')
   let text = '';
 
-  for (let i = 0; i < currentTarget.text().length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  for (let y = 0; y < tabTexts[index].count; y++) {
+    setTimeout(() => {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+      changingSpan.text(text);
+    }, 100 * y + 1);
   }
-  currentTarget.text(text);
-
   setTimeout(() => {
-    currentTarget.text(originalText);
-  }, 300);
-});
+    for (let z = 0; z < tabTexts[index].count; z++) {
+      setTimeout(() => {
+        let newText = text = text.replaceAt(z, tabTexts[index].text.charAt(z));
+        changingSpan.text(newText);
+        if (z == tabTexts[index].count - 1) {
+          animating = false;
+        }
+      }, 100 * z + 1);
+    }
+  }, 100 * updatingMyself[index].count + 2);
+}
 
 // create write work inspire design
 
@@ -70,7 +105,7 @@ $(document).ready(() => {
         setTimeout(() => {
           let newText = text = text.replaceAt(z, updatingMyself[i2].name.charAt(z));
           myselfTypeElem.text(newText);
-          if(z == updatingMyself[i2].count - 1){
+          if (z == updatingMyself[i2].count - 1) {
             i2 = i2 == 4 ? 0 : i2 + 1;
           }
         }, 100 * z + 1);
@@ -81,8 +116,6 @@ $(document).ready(() => {
 
   let workTypeElem = $('.updating.work-type');
   let i = 1;
-
-  //workTypeElem.text(updatingWorkType[0].name);
 
   let timerUpdatingWorkType = setInterval(() => {
     let text = '';
@@ -95,17 +128,12 @@ $(document).ready(() => {
     }
 
     setTimeout(() => {
-      //workTypeElem.text(updatingWorkType[i].name);
-
       for (let z = 0; z < updatingWorkType[i].count; z++) {
         setTimeout(() => {
-          //let sliced = updatingWorkType[i].count - z - 1;
-          //let text = '';
-          //sliced ? text = updatingWorkType[i].name.slice(0, -sliced) : text = updatingWorkType[i].name;
           let newText = text = text.replaceAt(z, updatingWorkType[i].name.charAt(z));
           workTypeElem.text(newText);
 
-          if(z == updatingWorkType[i].count - 1){
+          if (z == updatingWorkType[i].count - 1) {
             i = i == 2 ? 0 : i + 1;
           }
         }, 100 * z + 1);
@@ -119,7 +147,7 @@ $(document).ready(() => {
   // }
 });
 
-String.prototype.replaceAt = function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
   return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
 let str = 'abacaba';

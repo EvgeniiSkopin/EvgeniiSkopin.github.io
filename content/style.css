@@ -33,7 +33,7 @@ body {
 }
 
 a {
-    cursor: url('img/cursor_075.png'), auto !important;
+    cursor: url('img/cursor_075.png') 10 4, auto !important;
 }
 
 
