@@ -14,10 +14,10 @@ $(document).ready(() => {
     document.body.appendChild(renderer.domElement);
 
     let geometry = new THREE.CubeGeometry(1.5, 1.5, 1.5, 10, 10, 10);
-    let material = new THREE.ParticleBasicMaterial({ size: 0.02, color: 868686 });
-    let mesh = new THREE.ParticleSystem(geometry, material);
+    let material = new THREE.PointsMaterial({ size: 0.02, color: 0x424242 });
+    let mesh = new THREE.Points(geometry, material);
     scene.add(mesh);
-    
+
     camera.position.z = 2;
 
     render = () => {

@@ -124,4 +124,4 @@ String.prototype.replaceAt = function(index, replacement) {
 }
 let str = 'abacaba';
 let index = 2;
-console.log(str.replaceAt(index, "x")); // result: abxcaba
+//console.log(str.replaceAt(index, "x")); // result: abxcaba
