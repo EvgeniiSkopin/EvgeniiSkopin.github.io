@@ -1,4 +1,4 @@
-let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%$';
+let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$';
 
 let tabTexts = [
   { text: 'Home', class: 'home', animating: false, count: 4 },
@@ -30,13 +30,13 @@ $('.rand-text').mouseenter((event) => {
 
 changeText = (currentTarget, index) => {
   let changingSpan = currentTarget.find('span')
-  let text = '';
+  let text = tabTexts[index].text;
 
   for (let y = 0; y < tabTexts[index].count; y++) {
     setTimeout(() => {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-      changingSpan.text(text);
-    }, 100 * y + 1);
+      let newText = text = text.replaceAt(y, possible.charAt(Math.floor(Math.random() * possible.length)));
+      changingSpan.text(newText);
+    }, 50 * y + 1);
   }
   setTimeout(() => {
     for (let z = 0; z < tabTexts[index].count; z++) {
@@ -46,9 +46,9 @@ changeText = (currentTarget, index) => {
         if (z == tabTexts[index].count - 1) {
           animating = false;
         }
-      }, 100 * z + 1);
+      }, 80 * z + 1);
     }
-  }, 100 * updatingMyself[index].count + 2);
+  }, 50 * updatingMyself[index].count + 2);
 }
 
 // create write work inspire design
