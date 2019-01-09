@@ -270,21 +270,25 @@ canvas {
 
 .scroll {
     position: absolute;
-    bottom: 55px;
-    left: calc(50% - 60px);
+    width: 100px;
+    bottom: 0;
+    left: calc(50% - 50px);
     transform: rotate(-90deg);
 }
 
 .scroll-line {
+    position: absolute;
     display: inline-block;
     width: 70px;
     height: 1px;
     background-color: #00E0FF;
-    margin-bottom: 3px;
-    margin-right: 10px;
+    left: 50px;
 }
 
 .scroll-text {
+    top: -4px;
+    position: absolute;
+    left: 130px;
     color: #E5E5E5;
     font-size: 10px;
     letter-spacing: 4px;

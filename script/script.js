@@ -49,6 +49,12 @@ $(window).bind('DOMMouseScroll mousewheel', (event) => {
 });
 
 
+
+setInterval(() => {
+    $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
+    $(".scroll-line").animate({ width: "70px", left: "50px", opacity: "1" }, 500);
+}, 1500);
+
 // animated div blocks with text
 $("#box1 .colorLayer").animate({ left: "0px" }, 300);
 $("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
