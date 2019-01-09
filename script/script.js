@@ -56,7 +56,7 @@ setInterval(() => {
 }, 1500);
 
 // animated div blocks with text
-$("#box1 .colorLayer").animate({ left: "0px" }, 300);
+$(" #box1 .colorLayer").animate({ left: "0px" }, 300);
 $("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
 $("#box1 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
 $("#box1 .title").animate({ left: "0px" });
