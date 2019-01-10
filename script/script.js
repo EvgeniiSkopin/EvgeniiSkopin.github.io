@@ -11,12 +11,18 @@ changeTab = (tab) => {
     if (scrolling) { return; }
     scrolling = true;
     $('.menu-underline').addClass('hidden');
-    $(`.menu-underline.${tab}`).removeClass('hidden');
+    $(`.menu-underline.${tab}`).removeClass('hidden'); 
     scrollPosition = scrollPositions.find(x => x.pageName == tab);
     $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
     setTimeout(() => {
         scrolling = false;
     }, 1500);
+}
+
+animateViewHideContent = (prevScrollPosition, newScrollPosition) => {
+  $(`.content-${prevScrollPosition.tab} .content-hide`);
+  
+  $(`.content-${newScrollPosition.tab} .content-show`);
 }
 
 $(window).bind('DOMMouseScroll mousewheel', (event) => {
