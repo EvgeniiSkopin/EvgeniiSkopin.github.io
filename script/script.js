@@ -1,7 +1,7 @@
 let scrollPositions = [
-  { pageName: 'home', className: 'first-page-content', index: 0, top: '0' },
-  { pageName: 'projects', className: 'second-page-content', index: 1, top: '-100vh' },
-  { pageName: 'contacts', className: 'third-page-content', index: 2, top: '-200vh' }
+  { pageName: 'home', className: 'first-page-content', index: 0 },
+  { pageName: 'projects', className: 'second-page-content', index: 1 },
+  { pageName: 'contacts', className: 'third-page-content', index: 2 }
 ];
 let scrollPosition = scrollPositions[0];
 let scrolling = false;
@@ -10,62 +10,112 @@ let scrolling = false;
 changeTab = (tab) => {
   if (scrolling) { return; }
   scrolling = true;
-
-  changeMenuUnderline(tab);
-
-  scrollPosition = scrollPositions.find(x => x.pageName == tab);
-  $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
+  let newScrollPosition = scrollPositions.find(x => x.pageName == tab);
+  changePage(scrollPosition, newScrollPosition);
+  scrollPosition = newScrollPosition;
+  changeMenuUnderline(newScrollPosition.pageName);
   setTimeout(() => {
     scrolling = false;
-  }, 1500);
+  }, 1000);
 }
 
 changeMenuUnderline = (tabName) => {
-  $('.menu-underline').addClass('hidden');
-  $(`.menu-underline.${tabName}`).removeClass('hidden');
+  $(`.menu-underline`).animate({ left: '50%', width: '0'}, 500);
+  $(`.menu-underline.${tabName}`).animate({ left: '15%', width: '85%'}, 500);
 }
 
-animateViewHideContent = (prevScrollPosition, newScrollPosition) => {
-  $(`.content-${prevScrollPosition.pageName} .content-hide`).animate({ opacity: 0 }, 500);
-  setTimeout(() => {
-    $(`.content-${newScrollPosition.pageName} .content-hide`).animate({ opacity: 1 }, 500);
-  }, 1500);
+changePage = (prevScrollPosition, newScrollPosition) => {
+  if (prevScrollPosition) {
+    if (prevScrollPosition.index == 0) {
+      $('.first-page-content .greeting h1').animate({ opacity: 0, top: '-75px' }, 500);
+      $('.first-page-content .greeting .info-block').animate({ opacity: 0, top: '-50px' }, 700);
+      $('.first-page-content .scroll').animate({ opacity: 0 }, 500);
+      setTimeout(() => {
+        $('.first-page-content').addClass('hidden');
+      }, 800);
+    }
+    else if (prevScrollPosition.index == 1) {
+      $('.second-page-content .slider-control').animate({ opacity: 0 }, 500);
+      $('.second-page-content .morph-wrap').animate({ opacity: 0, marginTop: '-50px' }, 500);
+      $('.second-page-content .sliders-wrapper .slider-content').animate({ opacity: 0, marginTop: '50px' }, 500);
+      $('.second-page-content').animate({ opacity: 0 }, 500);
+      setTimeout(() => {
+        $('.second-page-content').addClass('hidden');
+      }, 600);
+    }
+    else if (prevScrollPosition.index == 2) {
+      $('.third-page-content .contacts-main .contacts-content').animate({ opacity: 0, left: '-50px' }, 500,
+        () => {
+          $('.third-page-content .contacts-main').animate({ opacity: 0, marginLeft: '-100px' }, 100);
+        });
+      setTimeout(() => {
+        $('.third-page-content').addClass('hidden');
+      }, 600);
+    }
+  }
+  if (newScrollPosition) {
+    if (newScrollPosition.index == 0) {
+      setTimeout(() => {
+        $('.first-page-content').removeClass('hidden');
+        $('.first-page-content .greeting h1').animate({ opacity: 1, top: 0 }, 500);
+        $('.first-page-content .greeting .info-block').animate({ opacity: 1, top: 0 }, 1000);
+        setTimeout(() => {
+          $('.first-page-content .scroll').animate({ opacity: 1 }, 500);
+        }, 600);
+      }, 600);
+    }
+    else if (newScrollPosition.index == 1) {
+      setTimeout(() => {
+        $('.second-page-content').removeClass('hidden');
+        $('.second-page-content').animate({ opacity: 1 }, 500,
+          () => {
+            $('.second-page-content .morph-wrap').animate({ opacity: 1, marginTop: '0' }, 500);
+            $('.second-page-content .sliders-wrapper .slider-content').animate({ opacity: 1, marginTop: '0' }, 500);
+            setTimeout(() => {
+              $('.second-page-content .slider-control').animate({ opacity: 1 }, 500);
+            }, 500);
+          });
+      }, 600);
+    }
+    else if (newScrollPosition.index == 2) {
+      setTimeout(() => {
+        $('.third-page-content').removeClass('hidden');
+        $('.third-page-content .contacts-main').animate({ opacity: 1, marginLeft: '0' }, 100,
+          () => {
+            $('.third-page-content .contacts-main .contacts-content').animate({ opacity: 1, left: '0' }, 500);
+          });
+      }, 600);
+    }
+  }
 }
 
 $(window).bind('DOMMouseScroll mousewheel', (event) => {
   if (scrolling) { return; }
   scrolling = true;
-
   if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
     // down
     if (scrollPosition.index < 2) {
       let newScrollPosition = scrollPositions[scrollPosition.index + 1];
-      animateViewHideContent(scrollPosition, newScrollPosition);
+      changePage(scrollPosition, newScrollPosition);
       scrollPosition = newScrollPosition;
-      $('.scrollable-body').animate({ top: scrollPosition.top }, 2000);
     }
   } else {
     // up
     if (scrollPosition.index > 0) {
-      scrolling = true;
       let newScrollPosition = scrollPositions[scrollPosition.index - 1];
-      animateViewHideContent(scrollPosition, newScrollPosition);
+      changePage(scrollPosition, newScrollPosition);
       scrollPosition = newScrollPosition;
-      $('.scrollable-body').animate({ top: scrollPosition.top }, 2000);
     }
   }
-
   changeMenuUnderline(scrollPosition.pageName);
-
   setTimeout(() => {
     scrolling = false;
-  }, 1500);
+  }, 1000);
 
   return;
 });
 
-
-
+// scroll line animation
 setInterval(() => {
   if (scrollPosition.index == 0) {
     $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
@@ -73,7 +123,9 @@ setInterval(() => {
   }
 }, 1500);
 
-// animated div blocks with text
+// animated div blocks with text first page
+$(`.menu-underline.home`).animate({ left: '15%', width: '85%'}, 500);
+
 $(" #box1 .colorLayer").animate({ left: "0px" }, 300);
 $("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
 $("#box1 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
