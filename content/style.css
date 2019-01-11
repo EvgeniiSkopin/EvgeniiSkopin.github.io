@@ -11,6 +11,36 @@ body {
     cursor: crosshair;
 }
 
+body canvas, body .body-content {
+    opacity: 0;
+}
+
+.loader {
+    text-align: center;
+    z-index: 9999;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 50px);
+}
+
+.loader .loader-percentage {
+    position: relative;
+    opacity: 0;
+    top: -25px;
+    color: white;
+}
+
+.loader .loader-line {
+    height: 2px;
+    width: 0;
+    left: 50%;
+    top: 5px;
+    position: relative;
+    background-color: #00E0FF;
+}
+
 .hidden {
     display: none !important;
 }

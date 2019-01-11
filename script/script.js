@@ -1,3 +1,127 @@
+document.onreadystatechange = () => {
+  if (document.readyState === 'interactive') {
+    initLoader();
+  }
+  else if (document.readyState === 'complete') {
+    initApp();
+  }
+}
+
+let loaderInterval = null;
+let percentage = 0;
+
+initLoader = () => {
+  $('.loader .loader-percentage').animate({ top: '0', opacity: 1 }, 500);
+  loaderInterval = setInterval(() => {
+    percentage++;
+    $('.loader .loader-percentage').text(`${percentage}%`);
+    $('.loader .loader-line').animate({ left: `${50 - percentage / 2}`, width: `${percentage}` }, 1);
+
+    if(percentage == 100){
+      clearInterval(loaderInterval);
+    }
+  }, 500);
+};
+
+initApp = () => {
+  // animated div blocks with text first page
+  $(`.menu-underline.home`).animate({ left: '15%', width: '85%' }, 500);
+
+  $(" #box1 .colorLayer").animate({ left: "0px" }, 300);
+  $("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
+  $("#box1 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
+  $("#box1 .title").animate({ left: "0px" });
+
+  $("#box2 .colorLayer").delay(300).animate({ left: "0px" }, 300);
+  $("#box2 .colorLayer").delay(400).animate({ left: "390px" }, 300);
+  $("#box2 .backGroundLayer").delay(1100).animate({ left: "0px" }, 500);
+  $("#box2 .title").delay(300).animate({ left: "0px" });
+
+  // scroll line animation
+  setInterval(() => {
+    if (scrollPosition.index == 0) {
+      $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
+      $(".scroll-line").animate({ width: "60px", left: "60px", opacity: "1" }, 500);
+    }
+  }, 1500);
+
+  $(window).bind('DOMMouseScroll mousewheel', (event) => {
+    if (scrolling) { return; }
+    scrolling = true;
+    if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
+      // down
+      if (scrollPosition.index < 2) {
+        let newScrollPosition = scrollPositions[scrollPosition.index + 1];
+        changePage(scrollPosition, newScrollPosition);
+        scrollPosition = newScrollPosition;
+      }
+    } else {
+      // up
+      if (scrollPosition.index > 0) {
+        let newScrollPosition = scrollPositions[scrollPosition.index - 1];
+        changePage(scrollPosition, newScrollPosition);
+        scrollPosition = newScrollPosition;
+      }
+    }
+    changeMenuUnderline(scrollPosition.pageName);
+    setTimeout(() => {
+      scrolling = false;
+    }, 1000);
+  
+    return;
+  });
+
+  let timerUpdatingMysef = setInterval(() => {
+    if (scrollPosition.index == 2) {
+      let text = '';
+      for (let y = 0; y < updatingMyself[i2].count; y++) {
+        setTimeout(() => {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+          myselfTypeElem.text(text);
+        }, 100 * y + 1);
+      }
+      setTimeout(() => {
+        for (let z = 0; z < updatingMyself[i2].count; z++) {
+          setTimeout(() => {
+            let newText = text = text.replaceAt(z, updatingMyself[i2].name.charAt(z));
+            myselfTypeElem.text(newText);
+            if (z == updatingMyself[i2].count - 1) {
+              i2 = i2 == 4 ? 0 : i2 + 1;
+            }
+          }, 100 * z + 1);
+        }
+      }, 100 * updatingMyself[i2].count + 2);
+    }
+  }, 3000);
+  let timerUpdatingWorkType = setInterval(() => {
+    if (scrollPosition.index == 0) {
+      let text = '';
+      for (let y = 0; y < updatingWorkType[i].count; y++) {
+        setTimeout(() => {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+          workTypeElem.text(text);
+        }, 100 * y + 1);
+      }
+      setTimeout(() => {
+        for (let z = 0; z < updatingWorkType[i].count; z++) {
+          setTimeout(() => {
+            let newText = text = text.replaceAt(z, updatingWorkType[i].name.charAt(z));
+            workTypeElem.text(newText);
+
+            if (z == updatingWorkType[i].count - 1) {
+              i = i == 2 ? 0 : i + 1;
+            }
+          }, 100 * z + 1);
+        }
+      }, 100 * updatingWorkType[i].count + 2);
+    }
+  }, 3000);
+
+  // clearTimers = () => {
+  //   clearInterval(timerUpdatingWorkType);
+  // }
+};
+
 let scrollPositions = [
   { pageName: 'home', className: 'first-page-content', index: 0 },
   { pageName: 'projects', className: 'second-page-content', index: 1 },
@@ -20,8 +144,8 @@ changeTab = (tab) => {
 }
 
 changeMenuUnderline = (tabName) => {
-  $(`.menu-underline`).animate({ left: '50%', width: '0'}, 500);
-  $(`.menu-underline.${tabName}`).animate({ left: '15%', width: '85%'}, 500);
+  $(`.menu-underline`).animate({ left: '50%', width: '0' }, 500);
+  $(`.menu-underline.${tabName}`).animate({ left: '15%', width: '85%' }, 500);
 }
 
 changePage = (prevScrollPosition, newScrollPosition) => {
@@ -92,52 +216,7 @@ changePage = (prevScrollPosition, newScrollPosition) => {
   }
 }
 
-$(window).bind('DOMMouseScroll mousewheel', (event) => {
-  if (scrolling) { return; }
-  scrolling = true;
-  if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-    // down
-    if (scrollPosition.index < 2) {
-      let newScrollPosition = scrollPositions[scrollPosition.index + 1];
-      changePage(scrollPosition, newScrollPosition);
-      scrollPosition = newScrollPosition;
-    }
-  } else {
-    // up
-    if (scrollPosition.index > 0) {
-      let newScrollPosition = scrollPositions[scrollPosition.index - 1];
-      changePage(scrollPosition, newScrollPosition);
-      scrollPosition = newScrollPosition;
-    }
-  }
-  changeMenuUnderline(scrollPosition.pageName);
-  setTimeout(() => {
-    scrolling = false;
-  }, 1000);
 
-  return;
-});
-
-// scroll line animation
-setInterval(() => {
-  if (scrollPosition.index == 0) {
-    $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
-    $(".scroll-line").animate({ width: "60px", left: "60px", opacity: "1" }, 500);
-  }
-}, 1500);
-
-// animated div blocks with text first page
-$(`.menu-underline.home`).animate({ left: '15%', width: '85%'}, 500);
-
-$(" #box1 .colorLayer").animate({ left: "0px" }, 300);
-$("#box1 .colorLayer").delay(400).animate({ left: "425px" }, 300);
-$("#box1 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
-$("#box1 .title").animate({ left: "0px" });
-
-$("#box2 .colorLayer").delay(300).animate({ left: "0px" }, 300);
-$("#box2 .colorLayer").delay(400).animate({ left: "390px" }, 300);
-$("#box2 .backGroundLayer").delay(1100).animate({ left: "0px" }, 500);
-$("#box2 .title").delay(300).animate({ left: "0px" });
 
 // slider
 let currentSlider = 'slider0';
@@ -178,7 +257,7 @@ changeSlider = (el) => {
   if (el.id != currentSlider) {
     currentSlider = el.id;
 
-    $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500, 
+    $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500,
       () => {
         animateSliderParts(el.id);
       });
@@ -195,13 +274,13 @@ changeSlider = (el) => {
 }
 
 animateSliderParts = (slideId) => {
-  if(!slidersData[slideId].isLoaded){
+  if (!slidersData[slideId].isLoaded) {
     slidersData[slideId].isLoaded = true;
     $(`.${slideId} .animate-box .colorLayer`).animate({ left: "0px" }, 300);
     $(`.${slideId} .animate-box .colorLayer`).delay(400).animate({ left: "425px" }, 300);
     $(`.${slideId} .animate-box .backGroundLayer`).delay(800).animate({ left: "0px" }, 500);
     $(`.${slideId} .animate-box .title`).animate({ left: "0px" });
-    setTimeout(() =>{
+    setTimeout(() => {
       $(`.${slideId} .slider-title .slider-proj-name`).animate({ top: '10px' }, 500);
     }, 900);
   }
@@ -308,68 +387,12 @@ let updatingWorkType = [
     name: 'LOGO'
   }]
 
-$(document).ready(() => {
-  let myselfTypeElem = $('.updating.myself');
-  let i2 = 1;
+let workTypeElem = $('.updating.work-type');
+let i = 1;
 
-  let timerUpdatingMysef = setInterval(() => {
-    let text = '';
-    for (let y = 0; y < updatingMyself[i2].count; y++) {
-      setTimeout(() => {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-        myselfTypeElem.text(text);
-      }, 100 * y + 1);
-    }
-    setTimeout(() => {
-      for (let z = 0; z < updatingMyself[i2].count; z++) {
-        setTimeout(() => {
-          let newText = text = text.replaceAt(z, updatingMyself[i2].name.charAt(z));
-          myselfTypeElem.text(newText);
-          if (z == updatingMyself[i2].count - 1) {
-            i2 = i2 == 4 ? 0 : i2 + 1;
-          }
-        }, 100 * z + 1);
-      }
-    }, 100 * updatingMyself[i2].count + 2);
-  }, 5000);
-
-
-  let workTypeElem = $('.updating.work-type');
-  let i = 1;
-
-  let timerUpdatingWorkType = setInterval(() => {
-    let text = '';
-
-    for (let y = 0; y < updatingWorkType[i].count; y++) {
-      setTimeout(() => {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-        workTypeElem.text(text);
-      }, 100 * y + 1);
-    }
-
-    setTimeout(() => {
-      for (let z = 0; z < updatingWorkType[i].count; z++) {
-        setTimeout(() => {
-          let newText = text = text.replaceAt(z, updatingWorkType[i].name.charAt(z));
-          workTypeElem.text(newText);
-
-          if (z == updatingWorkType[i].count - 1) {
-            i = i == 2 ? 0 : i + 1;
-          }
-        }, 100 * z + 1);
-      }
-    }, 100 * updatingWorkType[i].count + 2);
-
-  }, 5000);
-
-  // clearTimers = () => {
-  //   clearInterval(timerUpdatingWorkType);
-  // }
-});
+let myselfTypeElem = $('.updating.myself');
+let i2 = 1;
 
 String.prototype.replaceAt = function (index, replacement) {
   return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
-let str = 'abacaba';
-let index = 2;
-//console.log(str.replaceAt(index, "x")); // result: abxcaba
