@@ -1,0 +1,45 @@
+.description-app {
+	background-color: #B8E8E1;
+	padding-top: 165px;
+	padding-bottom: 145px;
+
+	&__wrapper {
+		display: flex;
+
+		&_reverse {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&__description {
+		width: 365px;
+		margin-right: 105px;
+
+		@media @desktop {
+			margin-right: 225px;
+		}
+
+		&_reverse {
+			margin-right: 0;
+			margin-left: 105px;
+
+			@media @desktop {
+				margin-left: 225px;
+			}
+		}
+	}
+
+	&__title {
+		color: #303030;
+		font-size: 52px;
+	}
+
+	&__text {
+		color: #868686;
+		font-size: 18px;
+		line-height: 25px;
+	}
+
+	&__img {
+	}
+}

@@ -1,0 +1,38 @@
+.task {
+	background-color: #70C4E3;
+	padding-top: 130px;
+	padding-bottom: 110px;
+
+	&__wrapper {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		
+		&:first-child {
+			margin-bottom: 140px;
+		}
+
+		&:last-child {
+			margin-left: 150px;
+
+			@media @desktop {
+				margin-left: 300px;
+			}
+		}
+	}
+
+	&__title {
+		color: #303030;
+		font-size: 28px;
+		margin: 0;
+	}
+
+	&__text {
+		color: #FFF;
+		font-family: 'Oswald', sans-serif;
+		font-size: 52px;
+		margin: 0;
+	}
+}

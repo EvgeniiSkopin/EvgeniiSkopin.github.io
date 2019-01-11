@@ -376,7 +376,10 @@ canvas {
 .slider-block.slider0 .slider-background-image{
     background-image: url('../content/img/slider-img-0.png');
 }
-.slider-block.slider0 .slider-proj-color-block {
+/* .slider-block.slider0 .slider-proj-color-block {
+    background: #70C4E3;
+} */
+.slider-block.slider0 .animate-box .colorLayer {
     background: #70C4E3;
 }
 
@@ -386,6 +389,9 @@ canvas {
 .slider-block.slider1 .slider-proj-color-block {
     background: #9EC749;
 }
+.slider-block.slider1 .animate-box .colorLayer {
+    background: #9EC749;
+}
 
 .slider-block.slider2 .slider-background-image{
     background-image: url('../content/img/slider-img-2.png');
@@ -393,11 +399,17 @@ canvas {
 .slider-block.slider2 .slider-proj-color-block {
     background: #FFE608;
 }
+.slider-block.slider2 .animate-box .colorLayer {
+    background: #FFE608;
+}
 
 .slider-block.slider3 .slider-background-image{
     background-image: url('../content/img/slider-img-3.png');
 }
 .slider-block.slider3 .slider-proj-color-block {
+    background: #7856FF;
+}
+.slider-block.slider3 .animate-box .colorLayer {
     background: #7856FF;
 }
 
@@ -445,7 +457,6 @@ canvas {
 }
 
 .animate-box .colorLayer{
-    background-color:#69E4F5;
     position: absolute;
     left: -425px;
     z-index: 2;
