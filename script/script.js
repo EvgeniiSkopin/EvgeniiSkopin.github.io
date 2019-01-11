@@ -1,66 +1,76 @@
 let scrollPositions = [
-    { pageName: 'home', className: 'first-page-content', index: 0, top: '0' },
-    { pageName: 'projects', className: 'second-page-content', index: 1, top: '-100vh' },
-    { pageName: 'contacts', className: 'third-page-content', index: 2, top: '-200vh' }
+  { pageName: 'home', className: 'first-page-content', index: 0, top: '0' },
+  { pageName: 'projects', className: 'second-page-content', index: 1, top: '-100vh' },
+  { pageName: 'contacts', className: 'third-page-content', index: 2, top: '-200vh' }
 ];
 let scrollPosition = scrollPositions[0];
 let scrolling = false;
 
 // change tab
 changeTab = (tab) => {
-    if (scrolling) { return; }
-    scrolling = true;
-    $('.menu-underline').addClass('hidden');
-    $(`.menu-underline.${tab}`).removeClass('hidden'); 
-    scrollPosition = scrollPositions.find(x => x.pageName == tab);
-    $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
-    setTimeout(() => {
-        scrolling = false;
-    }, 1500);
+  if (scrolling) { return; }
+  scrolling = true;
+
+  changeMenuUnderline(tab);
+
+  scrollPosition = scrollPositions.find(x => x.pageName == tab);
+  $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
+  setTimeout(() => {
+    scrolling = false;
+  }, 1500);
+}
+
+changeMenuUnderline = (tabName) => {
+  $('.menu-underline').addClass('hidden');
+  $(`.menu-underline.${tabName}`).removeClass('hidden');
 }
 
 animateViewHideContent = (prevScrollPosition, newScrollPosition) => {
-  $(`.content-${prevScrollPosition.tab} .content-hide`);
-  
-  $(`.content-${newScrollPosition.tab} .content-show`);
+  $(`.content-${prevScrollPosition.pageName} .content-hide`).animate({ opacity: 0 }, 500);
+  setTimeout(() => {
+    $(`.content-${newScrollPosition.pageName} .content-hide`).animate({ opacity: 1 }, 500);
+  }, 1500);
 }
 
 $(window).bind('DOMMouseScroll mousewheel', (event) => {
-    if (scrolling) { return; }
-    scrolling = true;
+  if (scrolling) { return; }
+  scrolling = true;
 
-    if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-        // down
-        if (scrollPosition.index < 2) {
-            scrollPosition = scrollPositions[scrollPosition.index + 1];
-            $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
-        }
-    } else {
-        // up
-        if (scrollPosition.index > 0) {
-            scrolling = true;
-            scrollPosition = scrollPositions[scrollPosition.index - 1];
-            $('.scrollable-body').animate({ top: scrollPosition.top }, 1000);
-        }
+  if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
+    // down
+    if (scrollPosition.index < 2) {
+      let newScrollPosition = scrollPositions[scrollPosition.index + 1];
+      animateViewHideContent(scrollPosition, newScrollPosition);
+      scrollPosition = newScrollPosition;
+      $('.scrollable-body').animate({ top: scrollPosition.top }, 2000);
     }
+  } else {
+    // up
+    if (scrollPosition.index > 0) {
+      scrolling = true;
+      let newScrollPosition = scrollPositions[scrollPosition.index - 1];
+      animateViewHideContent(scrollPosition, newScrollPosition);
+      scrollPosition = newScrollPosition;
+      $('.scrollable-body').animate({ top: scrollPosition.top }, 2000);
+    }
+  }
 
-    $('.menu-underline').addClass('hidden');
-    $(`.menu-underline.${scrollPosition.pageName}`).removeClass('hidden');
+  changeMenuUnderline(scrollPosition.pageName);
 
-    setTimeout(() => {
-        scrolling = false;
-    }, 1500);
-    
-    return;
+  setTimeout(() => {
+    scrolling = false;
+  }, 1500);
+
+  return;
 });
 
 
 
 setInterval(() => {
-    if(scrollPosition.index == 0){
-        $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
-        $(".scroll-line").animate({ width: "60px", left: "60px", opacity: "1" }, 500);
-    }
+  if (scrollPosition.index == 0) {
+    $(".scroll-line").animate({ width: "0px", opacity: "0.1" }, 500, () => { $(".scroll-line").css({ left: "125px" }); });
+    $(".scroll-line").animate({ width: "60px", left: "60px", opacity: "1" }, 500);
+  }
 }, 1500);
 
 // animated div blocks with text
@@ -85,47 +95,47 @@ let currentSlider = 'slider0';
 
 let slidersData =
 {
-    slide0: {
-        points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
-        duration: 1000,
-        rotate: 0,
-        left: 0
-    },
-    slide1: {
-        points: '50 225, 137.41 73.49, 312.33 73.35, 399.99 224.72, 312.82 376.36, 137.90 376.78',
-        duration: 1000,
-        rotate: 10,
-        left: '-100%'
-    },
-    slide2: {
-        points: '50 80, 225 480, 450 80, 50 80, 50 80, 50 80',
-        duration: 1000,
-        rotate: -8,
-        left: '-200%'
-    },
-    slide3: {
-        points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
-        duration: 1000,
-        rotate: 0,
-        left: '-300%'
-    }
+  slide0: {
+    points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
+    duration: 1000,
+    rotate: 0,
+    left: 0
+  },
+  slide1: {
+    points: '50 225, 137.41 73.49, 312.33 73.35, 399.99 224.72, 312.82 376.36, 137.90 376.78',
+    duration: 1000,
+    rotate: 10,
+    left: '-100%'
+  },
+  slide2: {
+    points: '50 80, 225 480, 450 80, 50 80, 50 80, 50 80',
+    duration: 1000,
+    rotate: -8,
+    left: '-200%'
+  },
+  slide3: {
+    points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
+    duration: 1000,
+    rotate: 0,
+    left: '-300%'
+  }
 }
 
 changeSlider = (el) => {
-    if (el.id != currentSlider) {
-        currentSlider = el.id;
+  if (el.id != currentSlider) {
+    currentSlider = el.id;
 
-        $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500);
-        $('.control-line.active').removeClass('active');
-        $(el).addClass('active');
+    $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500);
+    $('.control-line.active').removeClass('active');
+    $(el).addClass('active');
 
-        anime({
-            targets: '.morph polygon',
-            points: slidersData[el.id].points,
-            duration: slidersData[el.id].duration,
-            rotate: slidersData[el.id].rotate
-        });
-    }
+    anime({
+      targets: '.morph polygon',
+      points: slidersData[el.id].points,
+      duration: slidersData[el.id].duration,
+      rotate: slidersData[el.id].rotate
+    });
+  }
 }
 
 // var i, N = 6, X = -225, Y = -225, R = 175;
