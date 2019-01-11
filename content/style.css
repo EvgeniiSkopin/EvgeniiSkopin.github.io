@@ -408,6 +408,11 @@ canvas {
     right: 0;
 }
 
+.slider-title {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
 .slider-proj-name {
     font-family: 'Play';
     font-weight: bold;
@@ -415,9 +420,11 @@ canvas {
     letter-spacing: 0.2em;
     color: #FFFFFF;
     margin: 0;
+    position: relative;
+    top: 45px;
 }
 
-#box3 {
+.animate-box {
     height: 47px;
     width: 425px;
     position: relative;
@@ -425,26 +432,26 @@ canvas {
     line-height: 40px;
 }
 
-#box3 div {
+.animate-box div {
     height: 47px;
     width: 425px;
 }
 
-#box3 .backgroundLayer {
+.animate-box .backgroundLayer {
     background-color: black;
     position: absolute;
     left: 425px;
     z-index: 0;
 }
 
-#box3 .colorLayer{
+.animate-box .colorLayer{
     background-color:#69E4F5;
     position: absolute;
     left: -425px;
     z-index: 2;
 }
 
-#box3 .title{
+.animate-box .title{
     position: absolute;
     left: -425px;
     z-index: 1;
@@ -461,20 +468,33 @@ canvas {
     left: calc(50% - 50px);
 }
 
-.control-line {
+.slider-control a {
     display: inline-block;
-    width: 5px;
+    width: 15px;
     height: 50px;
-    margin-left: 10px;
-    background-color: white;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
-.control-line.active {
+.slider-control a.active {
     height: 70px;
+}
+
+.control-line {
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    margin-left: 7px;
+    background-color: white;
+}
+
+.slider-control a:hover .control-line {
+    background-color: #7AE9FF;
+}
+
+.slider-control a.active .control-line {
     background-color: #00E0FF;
 }
 

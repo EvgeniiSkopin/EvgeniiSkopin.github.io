@@ -50,7 +50,7 @@ changePage = (prevScrollPosition, newScrollPosition) => {
         });
       setTimeout(() => {
         $('.third-page-content').addClass('hidden');
-      }, 600);
+      }, 700);
     }
   }
   if (newScrollPosition) {
@@ -72,6 +72,7 @@ changePage = (prevScrollPosition, newScrollPosition) => {
             $('.second-page-content .morph-wrap').animate({ opacity: 1, marginTop: '0' }, 500);
             $('.second-page-content .sliders-wrapper .slider-content').animate({ opacity: 1, marginTop: '0' }, 500);
             setTimeout(() => {
+              animateSliderParts('slider0');
               $('.second-page-content .slider-control').animate({ opacity: 1 }, 500);
             }, 500);
           });
@@ -84,8 +85,21 @@ changePage = (prevScrollPosition, newScrollPosition) => {
           () => {
             $('.third-page-content .contacts-main .contacts-content').animate({ opacity: 1, left: '0' }, 500);
           });
-      }, 600);
+      }, 700);
     }
+  }
+}
+
+animateSliderParts = (slideId) => {
+  if(!slidersData[slideId].isLoaded){
+    slidersData[slideId].isLoaded = true;
+    $(`.${slideId} .animate-box .colorLayer`).animate({ left: "0px" }, 300);
+    $(`.${slideId} .animate-box .colorLayer`).delay(400).animate({ left: "425px" }, 300);
+    $(`.${slideId} .animate-box .backGroundLayer`).delay(800).animate({ left: "0px" }, 500);
+    $(`.${slideId} .animate-box .title`).animate({ left: "0px" });
+    setTimeout(() =>{
+      $(`.${slideId} .slider-title .slider-proj-name`).animate({ top: '10px' }, 500);
+    }, 900);
   }
 }
 
@@ -136,40 +150,38 @@ $("#box2 .colorLayer").delay(400).animate({ left: "390px" }, 300);
 $("#box2 .backGroundLayer").delay(1100).animate({ left: "0px" }, 500);
 $("#box2 .title").delay(300).animate({ left: "0px" });
 
-$("#box3 .colorLayer").animate({ left: "0px" }, 300);
-$("#box3 .colorLayer").delay(400).animate({ left: "425px" }, 300);
-$("#box3 .backGroundLayer").delay(800).animate({ left: "0px" }, 500);
-$("#box3 .title").animate({ left: "0px" });
-
-
 // slider
 let currentSlider = 'slider0';
 
 let slidersData =
 {
-  slide0: {
+  slider0: {
     points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
     duration: 1000,
     rotate: 0,
-    left: 0
+    left: 0,
+    isLoaded: false
   },
-  slide1: {
+  slider1: {
     points: '50 225, 137.41 73.49, 312.33 73.35, 399.99 224.72, 312.82 376.36, 137.90 376.78',
     duration: 1000,
     rotate: 10,
-    left: '-100%'
+    left: '-100%',
+    isLoaded: false
   },
-  slide2: {
+  slider2: {
     points: '50 80, 225 480, 450 80, 50 80, 50 80, 50 80',
     duration: 1000,
     rotate: -8,
-    left: '-200%'
+    left: '-200%',
+    isLoaded: false
   },
-  slide3: {
+  slider3: {
     points: '50 50, 50 450, 450 450, 450 50, 50 50, 50 50',
     duration: 1000,
     rotate: 0,
-    left: '-300%'
+    left: '-300%',
+    isLoaded: false
   }
 }
 
@@ -177,8 +189,11 @@ changeSlider = (el) => {
   if (el.id != currentSlider) {
     currentSlider = el.id;
 
-    $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500);
-    $('.control-line.active').removeClass('active');
+    $(".sliders-wrapper").animate({ left: slidersData[el.id].left }, 500, 
+      () => {
+        animateSliderParts(el.id);
+      });
+    $('.slider-control a.active').removeClass('active');
     $(el).addClass('active');
 
     anime({
