@@ -392,6 +392,7 @@ canvas {
 }
 
 .slider-content {
+    display: block;
     max-width: 715px;
     height: 375px;
     top: calc(50% - 200px);
