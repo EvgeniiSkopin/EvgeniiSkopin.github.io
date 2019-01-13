@@ -160,10 +160,14 @@ canvas {
 
 .right-menu {
     float: right;
-    font-size: 18px;
-    opacity: 0.2;
     margin-right: 64px;
     color: #E5E5E5;
+}
+
+.alpha {
+    font-size: 18px;
+    opacity: 0.2;
+    color: rgba(229, 229, 229, 0.5);
 }
 
 .right-menu:hover {
