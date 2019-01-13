@@ -1,26 +1,38 @@
 document.onreadystatechange = () => {
   if (document.readyState === 'interactive') {
-    initLoader();
+    
   }
   else if (document.readyState === 'complete') {
-    initApp();
+    initLoader();
   }
 }
 
-let loaderInterval = null;
-let percentage = 0;
-
 initLoader = () => {
-  $('.loader .loader-percentage').animate({ top: '0', opacity: 1 }, 500);
-  loaderInterval = setInterval(() => {
-    percentage++;
-    $('.loader .loader-percentage').text(`${percentage}%`);
-    $('.loader .loader-line').animate({ left: `${50 - percentage / 2}`, width: `${percentage}` }, 1);
+  let percentage = 0;
 
-    if(percentage == 100){
-      clearInterval(loaderInterval);
-    }
-  }, 500);
+  $('.loader .loader-percentage').animate({ top: '0', opacity: 1 }, 500, 
+  () => {
+    let loaderInterval = setInterval(() => {
+      percentage++;
+      $('.loader .loader-percentage').text(`${percentage}%`);
+      $('.loader .loader-line').css({ "left": `${50 - percentage / 2}`, "width": `${percentage}`});
+
+      if(percentage == 100){
+        clearInterval(loaderInterval);
+        $('.loader').animate({ opacity: 0 }, 500, () => {
+          $('body canvas:not(#noise)').animate({ opacity: 1 }, 500);
+
+          $('.body-content').animate({ opacity: 1 }, 500, () => {
+            initApp();
+          });
+        });
+      }
+    }, 1);
+  });
+
+  //   
+  //   
+    //$('.loader .loader-line').animate({ left: `${50 - percentage / 2}`, width: `${percentage}` }, 1);
 };
 
 initApp = () => {
