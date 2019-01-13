@@ -13,6 +13,23 @@ body {
 
 body canvas, body .body-content {
     opacity: 0;
+    
+}
+
+body .body-content {
+    height: 100vh;
+}
+
+body .body-content:after {
+    content: "";
+    background-image: url(img/back.svg);
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -999;   
 }
 
 .loader {
@@ -143,6 +160,8 @@ canvas {
 
 .right-menu {
     float: right;
+    font-size: 18px;
+    opacity: 0.2;
     margin-right: 64px;
     color: #E5E5E5;
 }
@@ -228,16 +247,18 @@ canvas {
     padding: 20px 40px 0;
     text-align: center;
     font-family: 'Oswald';
-    font-size: 24px;
+    font-size: 21px;
+    letter-spacing: 0.1em;
 }
 
 #box1 {
+    margin: 0 auto;
     height: 47px;
     width: 425px;
     position: relative;
     transform: translateY(-50%);
     overflow: hidden;
-    line-height: 40px;
+    line-height: 44px;
 }
 
 #box1 div {
@@ -266,37 +287,38 @@ canvas {
 }
 
 #box2 {
+    margin: 0 auto;
     height: 47px;
-    width: 390px;
+    width: 425px;
     margin-top: 5px;
     position: relative;
     transform: translateY(-50%);
     overflow: hidden;
-    line-height: 40px;
+    line-height: 44px;
 }
 
 #box2 div {
     height: 47px;
-    width: 390px;
+    width: 425px;
 }
 
 #box2 .backgroundLayer {
     background-color: black;
     position: absolute;
-    left: 390px;
+    left: 425px;
     z-index: 0;
 }
 
 #box2 .colorLayer{
     background-color:#69E4F5;
     position: absolute;
-    left: -390px;
+    left: -425px;
     z-index: 2;
 }
 
 #box2 .title{
     position: absolute;
-    left: -390px;
+    left: -425px;
     z-index: 1;
 }
 
@@ -356,7 +378,7 @@ canvas {
 	justify-content: center; */
     pointer-events: none;
     z-index: -1;
-    margin-top: -50px;
+    margin-top: 50px;
 }
 
 .morph {

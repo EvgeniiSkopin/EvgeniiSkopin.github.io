@@ -45,7 +45,7 @@ initApp = () => {
   $("#box1 .title").animate({ left: "0px" });
 
   $("#box2 .colorLayer").delay(300).animate({ left: "0px" }, 300);
-  $("#box2 .colorLayer").delay(400).animate({ left: "390px" }, 300);
+  $("#box2 .colorLayer").delay(400).animate({ left: "425px" }, 300);
   $("#box2 .backGroundLayer").delay(1100).animate({ left: "0px" }, 500);
   $("#box2 .title").delay(300).animate({ left: "0px" });
 
@@ -207,12 +207,14 @@ changePage = (prevScrollPosition, newScrollPosition) => {
         $('.second-page-content').removeClass('hidden');
         $('.second-page-content').animate({ opacity: 1 }, 500,
           () => {
-            $('.second-page-content .morph-wrap').animate({ opacity: 1, marginTop: '0' }, 500);
-            $('.second-page-content .sliders-wrapper .slider-content').animate({ opacity: 1, marginTop: '0' }, 500);
-            setTimeout(() => {
-              animateSliderParts('slider0');
-              $('.second-page-content .slider-control').animate({ opacity: 1 }, 500);
-            }, 500);
+            $('.second-page-content .morph-wrap').animate({ opacity: 1, marginTop: '0' }, 500, 
+            () => {
+              $('.second-page-content .sliders-wrapper .slider-content').animate({ opacity: 1, marginTop: '0' }, 500);
+              setTimeout(() => {
+                animateSliderParts('slider0');
+                $('.second-page-content .slider-control').animate({ opacity: 1 }, 500);
+              }, 500);
+            });
           });
       }, 600);
     }
