@@ -545,3 +545,7 @@ body {
 .wrapper_small {
   max-width: 974px;
 }
+.app-link {
+  color: #9C9C9C;
+  font-weight: bold;
+}
